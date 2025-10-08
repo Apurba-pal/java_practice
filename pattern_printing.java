@@ -99,7 +99,38 @@ for(int[] a : arr){
         }
     }
     
+    static void reversePyramidOfnumbers(int row){
+        // TBD
+    }
+
+    static void hollowSquareOfNumbers(int row){
+        for(int i = 0;i<=row;i++){
+            for(int j = 0;j<=row;j++){
+                if(j == 0 || i == 0 || j == row || i == row){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    static void Xpattern(int row){
+        for(int i = 0;i<row;i++){
+            for(int j = 0;j<row;j++){
+                if((j==i) || ( j+i==row-1)){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
     public static void main(String[] args) {
-        floydTriangle(15);
+        Xpattern(9);
       }
 }
