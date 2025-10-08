@@ -1,27 +1,105 @@
+import java.lang.reflect.Array;
 import java.util.*;
 public class pattern_printing {
-      public static void main(String[] args) {
-        int rollNo[] = {101,102,103,104};
-        System.out.println(rollNo.length);
-        System.out.println(Arrays.toString(rollNo));
-        System.out.println("***********************");
 
-        for(int i =0;i<=rollNo.length-1;i++){
-            System.out.println(rollNo[i]+" ");
+    static void pyramidpattern(int rows){
+        for(int i = 0;i<rows;i++){
+            for(int j = 0;j<=(rows*2-1);j++){
+                if((j >= rows - i) && (j <= rows + i)){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
         }
-        System.out.println("************************");
+    }
 
-        int i = 0 ; 
-        while(i<rollNo.length){
-            System.out.println(rollNo[i]);
-            i = i + 1; 
+    static void invertedPyramid(int rows){
+        int x = rows*2;
+        for(int i = 0; i < rows;i++){
+            for(int j = 0;j <= x-1;j++){
+                if((j>i) && (j<x-i)){
+                    System.out.print("*");
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
         }
-        System.out.println("*******************************");
-        i = 0 ;
-        do{
-            System.out.println(rollNo[i]);
-            i = i + 1; 
-        }while(i<rollNo.length);
-           
+    }
+    
+    static void diamondStar(int rows) {
+    // Top part
+    for (int i = 0; i < rows; i++) {
+        for (int j = 1; j <= rows * 2 - 1; j++) {
+            if (j >= rows - i && j <= rows + i) {
+                System.out.print("*");
+            } else {
+                System.out.print(" ");
+            }
         }
+        System.out.println();
+    }
+
+    // Bottom part
+    for (int i = rows - 2; i >= 0; i--) {
+        for (int j = 1; j <= rows * 2 - 1; j++) {
+            if (j >= rows - i && j <= rows + i) {
+                System.out.print("*");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+    static void rightangled(int row){
+        for(int i = 0;i<row;i++){
+            for(int j = 0;j<=i;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+    
+    static void pascaltriangle(int row){
+        int[][] arr = new int[row][];
+        for(int i = 0;i<row;i++){
+            arr[i] = new int[i+1];
+            for(int j = 0;j< arr[i].length;j++){
+                if(j == 0 || j==i ){
+                    arr[i][j]=1;
+                }else{
+                    arr[i][j]=arr[i-1][j-1]+arr[i-1][j];
+                }
+            }
+            System.out.println();
+        }
+for(int[] a : arr){
+        for(int val : a){
+            System.out.print(val + " ");
+        }
+        System.out.println();
+    }
+    }
+
+    static void floydTriangle(int row){
+        int count = 0;
+        for(int i = 0;i<row;i++){
+            for(int j = 0;j<i;j++){
+                if(count<row){
+                    count++;
+                    System.out.print(count + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void main(String[] args) {
+        floydTriangle(15);
+      }
 }
