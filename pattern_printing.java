@@ -100,7 +100,16 @@ for(int[] a : arr){
     }
     
     static void reversePyramidOfnumbers(int row){
-        // TBD
+        for( int i = 0;i<row;i++){
+            for(int j = 0;j<=(row*2-1);j++){
+                if((j>i)&&(j<row*2-i)){
+                    System.out.print(j-i);
+                }else{
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
     }
 
     static void hollowSquareOfNumbers(int row){
@@ -131,6 +140,6 @@ for(int[] a : arr){
 
 
     public static void main(String[] args) {
-        Xpattern(9);
+        reversePyramidOfnumbers(5);
       }
 }
