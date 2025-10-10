@@ -10,7 +10,14 @@ public class string_class {
         // System.out.println(combined.stripTrailing());
         // System.out.println(fname.substring(fname.length() - 1));
         // System.out.println(fname.replace("Apu", "Lol"));
-
-        
+        StringBuffer myString = new StringBuffer("Welcome");
+        myString.append(" to Bangalore");
+        System.out.println("After append: " + myString);
+        myString.insert(8, "Hariharan ");
+        System.out.println("After insert: " + myString);
+        myString.replace(8, 16, "Hariiiiii");
+        System.out.println("After replace: " + myString);
+        myString.delete(myString.length() - 5, myString.length());
+        System.out.println("After delete: " + myString);
     }
 }
