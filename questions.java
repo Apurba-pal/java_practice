@@ -1,0 +1,191 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class questions {
+
+    boolean checkDuplicate(int[] arr) {
+        Arrays.sort(arr);
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] == arr[i - 1]) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void rotateArray(int[] arr, int k) {
+        if (arr == null || arr.length == 0) return;
+        int n = arr.length;
+        k = k % n;
+        if (k == 0) return;
+
+        // Perform k rotations
+        for (int i = 0; i < k; i++) {
+            int last = arr[n - 1];
+            for (int j = n - 1; j > 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[0] = last;
+        }
+    }
+
+    boolean isPalindrome(String s) {
+        if (s == null) return false;
+        s = s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+        for (int i = 0; i < s.length() / 2; i++) {
+            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) return false;
+        }
+        return true;
+    }
+
+    double calculateArea(double side) {
+        return side * side;
+    }
+
+    double calculateArea(double length, double width) {
+        return length * width;
+    }
+
+    int factorial(int n) {
+        if (n < 0)
+            System.out.println("n must be non-negative");
+        
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
+    }
+
+    double calculateAverage(int... scores) {
+    if (scores.length == 0) return 0;
+    int sum = 0;
+    for (int score : scores) sum += score;
+    return (double) sum / scores.length;
+}
+
+
+final class MathUtils {
+    private MathUtils() {} // Prevent instantiation
+
+    static int min(int a, int b) {
+        return (a < b) ? a : b;
+    }
+}
+
+
+void getGrade(int score) {
+    if (score < 0 || score > 100) {
+        System.out.println("Invalid score");
+    } else if (score >= 90) {
+        System.out.println("Grade: A");
+    } else if (score >= 80) {
+        System.out.println("Grade: B");
+    } else if (score >= 70) {
+        System.out.println("Grade: C");
+    } else if (score >= 60) {
+        System.out.println("Grade: D");
+    } else {
+        System.out.println("Grade: F");
+    }
+}
+
+boolean isPrime(int n) {
+    if (n <= 1) return false;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
+void printTriangle(int size) {
+    for (int i = 1; i <= size; i++) {
+        for (int j = size - i; j > 0; j--) System.out.print(" ");
+        for (int j = 1; j <= i; j++) System.out.print("*");
+        System.out.println();
+    }
+}
+
+void simpleCalculator() {
+    Scanner sc = new Scanner(System.in);
+    while (true) {
+        System.out.println("Enter operation (a+b, a-b, a*b, a/b) or 'exit' to quit:");
+        String input = sc.nextLine();
+        if (input.equalsIgnoreCase("exit")) break;
+
+        String[] tokens = input.split("[+\\-*/]");
+        if (tokens.length != 2) {
+            System.out.println("Invalid input");
+            continue;
+        }
+
+        double a = Double.parseDouble(tokens[0].trim());
+        double b = Double.parseDouble(tokens[1].trim());
+        char op = input.replaceAll("[0-9.]", "").trim().charAt(0);
+
+        switch (op) {
+            case '+': System.out.println("Result: " + (a + b)); break;
+            case '-': System.out.println("Result: " + (a - b)); break;
+            case '*': System.out.println("Result: " + (a * b)); break;
+            case '/': 
+                if (b == 0) System.out.println("Division by zero!");
+                else System.out.println("Result: " + (a / b));
+                break;
+            default: System.out.println("Unknown operator");
+        }
+    }
+}
+
+void readCSVLine() {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter comma-separated values:");
+    String line = sc.nextLine();
+    String[] values = line.split(",");
+    System.out.println("You entered:");
+    for (String val : values) System.out.println(val.trim());
+}
+
+    public static void main(String[] args) {
+        questions q = new questions();
+
+        System.out.println("---- Check Duplicates ----");
+        int[] arr3 = new int[]{1, 4, 5, 7, 5, 4, 5, 8};
+        System.out.println("Array: " + Arrays.toString(arr3));
+        System.out.println("Has duplicates? " + q.checkDuplicate(arr3));
+
+        System.out.println("\n---- Rotate Array ----");
+        int[] arr4 = new int[]{1, 2, 3, 4, 5};
+        System.out.println("Before rotation: " + Arrays.toString(arr4));
+        q.rotateArray(arr4, 2);
+        System.out.println("After rotation: " + Arrays.toString(arr4));
+
+        System.out.println("\n---- Palindrome Check ----");
+        String str1 = "A man, a plan, a canal: Panama";
+        System.out.println(str1 + " -> " + q.isPalindrome(str1));
+
+        System.out.println("\n---- Area Calculations ----");
+        System.out.println("Square area (5): " + q.calculateArea(5));
+        System.out.println("Rectangle area (4x6): " + q.calculateArea(4, 6));
+
+        System.out.println("\n---- Factorial ----");
+        System.out.println("5! = " + q.factorial(5));
+
+        System.out.println("\n---- Average ----");
+        System.out.println("Average of 10, 20, 30: " + q.calculateAverage(10, 20, 30));
+
+        System.out.println("\n---- Grades ----");
+        q.getGrade(95);
+        q.getGrade(82);
+        q.getGrade(67);
+        q.getGrade(50);
+
+        System.out.println("\n---- Prime Check ----");
+        System.out.println("Is 29 prime? " + q.isPrime(29));
+        System.out.println("Is 30 prime? " + q.isPrime(30));
+
+        System.out.println("\n---- Triangle Pattern ----");
+        q.printTriangle(5);
+
+
+        q.simpleCalculator();
+        q.readCSVLine();
+    }
+}
+

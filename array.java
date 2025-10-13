@@ -33,12 +33,36 @@ public class array {
         }
         return arr;
     }
-    
+
+    public static int reverseNumber(int num) {
+        int reversedNum = 0;
+        while (num != 0) {
+            int digit = num % 10;
+            reversedNum = reversedNum * 10 + digit;
+            num /= 10;
+        }
+        return reversedNum;
+    }
+public static int reverseArrayNum(int num) {
+    String str = Integer.toString(num);
+    int[] arr = new int[str.length()];
+    int index = 0;
+    while (num != 0) {
+        arr[index++] = num % 10;
+        num /= 10;
+    }
+    int reversedNum = 0;
+    for (int i = 0; i < arr.length; i++) {
+        reversedNum = reversedNum * 10 + arr[i];
+    }
+    return reversedNum;
+}
+
+
+
 
     
     public static void main(String[] args) {
-       array a = new array();
-        int[] arr = {5, 2, 9, 1, 7};
-        System.out.println(Arrays.toString(a.sortDecending(arr)));
+        System.out.println(reverseNumber(567));
     }
 }
