@@ -1,0 +1,345 @@
+name: apurba pal
+
+// Q1. create a parent class animal with a method makeSound(). Create a child classs Dog that overrides the method to print "dog barks". in main call the moethod using both animal and dog object. 
+
+class  Animal{
+    void makeSound(){
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void makeSound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class TestAnimal {
+    public static void main(String[] args) {
+
+        // Q1
+        Animal myAnimal = new Animal();
+        myAnimal.makeSound(); 
+
+        Dog myDog = new Dog();
+        myDog.makeSound();
+    }
+}
+
+
+O/P:
+Animal makes a sound
+Dog barks
+
+
+// Q2. create a superclass bank with the method getInterestRate(). Then create subclasses SBI, HDFC and ICICI that override this method with their own interest rates. use runtime polymorphism to display rates.
+class Bank {
+    public void getInterestRate() {
+        System.out.println("Base Interest Rate");
+    }
+}
+class SBI extends Bank {
+    @Override
+    public void getInterestRate() {
+        System.out.println("SBI Interest Rate: 7%");
+    }
+}
+class HDFC extends Bank {
+    @Override
+    public void getInterestRate() {
+        System.out.println("HDFC Interest Rate: 6.5%");
+    }
+}
+class ICICI extends Bank {
+    @Override
+    public void getInterestRate() {
+        System.out.println("ICICI Interest Rate: 6.8%");
+    }
+}
+class TestBank {
+    public static void main(String[] args) {
+        Bank b = new Bank();
+        b.getInterestRate();
+        Bank sbi = new SBI();
+        sbi.getInterestRate();
+        Bank hdfc = new HDFC();
+        hdfc.getInterestRate();
+        Bank icici = new ICICI();
+        icici.getInterestRate();
+    }
+}
+
+
+O/P:
+Base Interest Rate
+SBI Interest Rate: 7%
+HDFC Interest Rate: 6.5%
+ICICI Interest Rate: 6.8%
+
+// Q3. create a class vehicle with method start(). Override it in car class and use super.start() to call the parent version too.
+class Vehicle { 
+    public void start() {
+        System.out.println("Vehicle started");
+    }
+}
+class Car extends Vehicle {
+    @Override
+    public void start() {
+        super.start();
+        System.out.println("Car started");
+    }
+}
+class TestVehicle {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.start();
+    }
+}
+
+O/P:
+Vehicle started
+Car started
+
+
+// Q4. create a base class teacher with a showdetails() method declared as protected. create a subclass math teacher that overrides it as public demonstrate the concept that overriding can't reduce visibility
+class Teacher {
+    protected void showDetails() {
+        System.out.println("Teacher details");
+    }
+}
+class MathTeacher extends Teacher {
+    @Override
+    public void showDetails() {
+        System.out.println("Math Teacher details");
+    }
+}
+class TestTeacher {
+    public static void main(String[] args) {
+        MathTeacher mt = new MathTeacher();
+        mt.showDetails();
+    }
+}
+
+O/P:
+Math Teacher details
+
+
+
+// Q5 create a class employee with method calculate bonus(). subclass manager and developer should override the method with different bonus percentages. 
+class Employee {
+    public void calculateBonus() {
+        System.out.println("Employee bonus calculation");
+    }
+}
+
+class Manager extends Employee {
+    @Override
+    public void calculateBonus() {
+        System.out.println("Manager bonus calculation: 20%");
+    }
+}
+
+class Developer extends Employee {
+    @Override
+    public void calculateBonus() {
+        System.out.println("Developer bonus calculation: 15%");
+    }
+}
+
+public class TestBonus {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        emp.calculateBonus();
+
+        Employee mgr = new Manager();
+        mgr.calculateBonus();
+
+        Employee dev = new Developer();
+        dev.calculateBonus();
+    }
+    
+}
+
+O/P:
+Employee bonus calculation
+Manager bonus calculation: 20%
+Developer bonus calculation: 15%
+
+
+
+
+// Q6. create a superclass shape with a method area(). Create a subclass circle , rectangle, and triangle, that overrides the area methods and display their respective area formulas.
+
+class Shape {
+
+    public void area() {
+        System.out.println("Area of shape");
+    }
+}
+class Circle extends Shape {
+    @Override
+    public void area() {
+        System.out.println("Area of Circle: π * r * r");
+    }
+}
+class Rectangle extends Shape {
+    @Override
+    public void area() {
+        System.out.println("Area of Rectangle: length * width");
+    }
+}
+class Triangle extends Shape {
+    @Override
+    public void area() {
+        System.out.println("Area of Triangle: 0.5 * base * height");
+    }
+}
+
+
+public class TestShape {
+    public static void main(String[] args) {
+        Shape shape = new Shape();
+        shape.area();
+
+        Shape circle = new Circle();
+        circle.area();
+
+        Shape rectangle = new Rectangle();
+        rectangle.area();
+
+        Shape triangle = new Triangle();
+        triangle.area();
+    }
+}
+
+O/P:
+Area of shape
+Area of Circle: π * r * r
+Area of Rectangle: length * width
+Area of Triangle: 0.5 * base * height
+
+
+
+// Q7. print the area of a circle and a rectangle using method overloading
+
+class AreaCalculator {
+    public double calculateArea(double radius) {
+        return Math.PI * radius * radius;
+    }
+
+    public double calculateArea(double length, double width) {
+        return length * width;
+    }
+}
+
+
+public class AreaUsingMOverloading {
+    public static void main(String[] args) {
+        AreaCalculator a = new AreaCalculator();
+
+        double circleArea = a.calculateArea(5.0);
+        System.out.println("Circle : " + circleArea);
+
+        double rectangleArea = a.calculateArea(4.0, 6.0);
+        System.out.println("Rectangle : " + rectangleArea);
+    }
+}
+
+O/P:
+Circle : 78.53981633974483
+Rectangle : 24.0
+
+
+
+
+// Q8. create a calculator class to add integers and floats using method overloading
+
+public class CalculatorClass {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public float add(float a, float b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        CalculatorClass c = new CalculatorClass();
+
+        int intSum = c.add(5, 10);
+        System.out.println("Sum of integers: " + intSum);
+
+        float floatSum = c.add(5.5f, 10.5f);
+        System.out.println("Sum of floats: " + floatSum);
+    }
+    
+}
+
+O/P:
+Sum of integers: 15
+Sum of floats: 16.0
+
+
+
+
+// Q9. overload a display method to show student details with or without address
+
+public class studentDetalis {
+    void display(String name){
+        System.out.println("student details without address: \n name: " + name);
+    }
+    void display(String name, String Addr){
+        System.out.println("student details with address: \n name: " + name + "\n address: " + Addr);
+    }
+
+    public static void main(String[] args) {
+        studentDetalis s = new studentDetalis();
+        s.display("ABC");
+        s.display("ABC", "abc def ijk lmno");
+    }
+}
+
+O/P:
+student details without address: 
+ name: ABC
+student details with address: 
+ name: ABC
+ address: abc def ijk lmno
+
+
+
+// Q10. Overload a meothod book ticket for bus, train, and flight booking
+
+public class TestTicketBooking {
+    void bookTicket(String name, int seatNo){
+        System.out.println("ticket booking for bus \n name : " + name + "\n seat no. :" + seatNo);
+    }
+    void bookTicket(String name, int seatNo, int trainNo){
+        System.out.println("ticket booking for Train \n name : " + name + "\n train no: " + trainNo+ "\n seat no. :" + seatNo);
+    }
+    void bookTicket(String seatNo, String flightNo, String source , String destination){
+        System.out.println("ticket booking for flight \n flight no : " + flightNo + "\n seat no. :" + seatNo + "\n source :" + source + "\n destination :" + destination);
+    }
+
+    public static void main(String[] args) {
+        TestTicketBooking t = new TestTicketBooking();
+        t.bookTicket("ABCD", 4);
+        t.bookTicket("XYZ", 034, 012345);
+        t.bookTicket("34D", "WE22Q1", "ASD", "QWE");
+    }
+    
+}
+
+O/P:
+ticket booking for bus 
+ name : ABCD
+ seat no. :4
+ticket booking for Train 
+ name : XYZ
+ train no: 5349
+ seat no. :28
+ticket booking for flight 
+ flight no : WE22Q1
+ seat no. :34D
+ source :ASD
+ destination :QWE
