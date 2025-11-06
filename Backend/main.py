@@ -1,24 +1,28 @@
-from typing import Optional
-from pydantic import BaseModel, field_validator
+from fastapi import FastAPI,Request
 
-class Address(BaseModel):
-    street: str
-    city: str
-    zip_code: str   
-    
+app=FastAPI()
 
-class Student(BaseModel):
-    name: str
-    age: int
-    address: Address
+@app.middleware("http")
+async def middleware(request,call_next):
+    print("1")
+    response = await call_next(request)
 
-try:
-    
-    addr = Address(street="123 Main St", city="Springfield", zip_code="12345")
-    s1 = Student(name="Pramod", age=10, address=addr)
-    
-    print(s1.model_dump())
-    print(s1.model_dump_json())
-    
-except Exception as e:
-    print(f"Error: {e}")
+    print("2")
+    return response
+
+@app.get("/")
+def home():
+    return {"Message":"Hello WOrld!"}
+
+@app.post("/items")
+def get_items(item:dict):
+    return {"items":item}
+
+@app.post("/search/{item_id}")
+async def search(request:Request):
+    qp=request.query_params
+    body=await request.body()
+    para=request.path_params
+    header=request.headers
+
+    return {"Query_Param":qp,"Body":body,"Path_Param":para,"Header":header}

@@ -140,6 +140,6 @@ for(int[] a : arr){
 
 
     public static void main(String[] args) {
-        reversePyramidOfnumbers(5);
+        pyramidpattern(5);
       }
 }
